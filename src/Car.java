@@ -6,20 +6,30 @@ public class Car implements IVehicle {
         this.color = color;
         this.manufactureDate = manufactureDate;
     }
+
     public String getColor() {
         return color;
     }
+
     public void setColor(String color) {
         this.color = color;
     }
+
     public int getManufactureDate() {
         return manufactureDate;
     }
+
     public void setManufactureDate(int manufactureDate) {
         this.manufactureDate = manufactureDate;
     }
+
     @Override
     public int accept(IVehicleInspector vehicleInspector) {
         return vehicleInspector.visit(this);
+    }
+
+    @Override
+    public float co2Emissions() {
+        return (float) (8887 * (1 + (0.05 * (2020 - manufactureDate))));
     }
 }
